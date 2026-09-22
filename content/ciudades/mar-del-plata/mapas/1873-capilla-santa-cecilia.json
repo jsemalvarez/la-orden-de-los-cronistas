@@ -1,0 +1,105 @@
+{
+  "id": "mapa-1873-capilla",
+  "nombre": "La Capilla Santa Cecilia",
+  "leyenda": {
+    ".": "pasto",
+    ",": "loma",
+    "T": "arbol",
+    "S": "seto",
+    "B": "banco",
+    "r": "reja",
+    "c": "camino",
+    "p": "peatonal",
+    "C": "calle",
+    "~": "agua",
+    "a": "arena",
+    "#": "piedra",
+    "M": "muro",
+    "R": "techo",
+    "t": "torre",
+    "D": "puerta",
+    "G": "porton",
+    "_": "piso",
+    "g": "granza",
+    "=": "muelle",
+    "P": "pared"
+  },
+  "solidos": [
+    "arbol",
+    "seto",
+    "banco",
+    "reja",
+    "agua",
+    "piedra",
+    "muro",
+    "techo",
+    "torre",
+    "porton",
+    "pared"
+  ],
+  "entrada": {
+    "x": 8,
+    "y": 13
+  },
+  "filas": [
+    ",,,,,,,,,,,,,,,,,,",
+    ",,,,,,,,t,,,,,,,,,",
+    ",,,,,RRRRRRRR,,,,,",
+    ",,,,,RRRRRRRR,,T,,",
+    ",,T,,RRRRRRRR,,,,,",
+    ",,,,,RRRRRRRR,,,,,",
+    ",,,,,###GG###,,,,,",
+    ",,,,,,,,cc,,,,,,,,",
+    ",,,,,S,,cc,,S,,,T,",
+    ",,,T,,,,cc,,,,,,,,",
+    ",,,,,,,,cc,,,,,,,,",
+    ",,,,,,,,cc,,,T,,,,",
+    ",T,,,,,,cc,,,,,,,,",
+    ",,,,,,,,cc,,,,,,,,",
+    ",,,,,,,,,,,,,,,,,,"
+  ],
+  "personajes": [
+    {
+      "id": "peralta-ramos",
+      "nombre": "Patricio Peralta Ramos",
+      "x": 9,
+      "y": 7,
+      "mirando": "sur",
+      "ropa": "contorno",
+      "pelo": "blanco",
+      "dialogoId": "dlg-peralta-ramos"
+    },
+    {
+      "id": "vecino",
+      "nombre": "Vecino de la sierra",
+      "x": 12,
+      "y": 10,
+      "mirando": "oeste",
+      "ropa": "teja",
+      "ficticio": true,
+      "dialogoId": "dlg-vecino"
+    },
+    {
+      "id": "encapuchada",
+      "nombre": "Una figura encapuchada",
+      "x": 4,
+      "y": 11,
+      "mirando": "este",
+      "ropa": "violeta",
+      "pelo": "contorno",
+      "ficticio": true,
+      "dialogoId": "dlg-encapuchada"
+    },
+    {
+      "id": "titileo-despacho",
+      "nombre": "Un titileo en el aire",
+      "tipo": "objeto",
+      "sprite": "brillo",
+      "ropa": "aguaClara",
+      "x": 15,
+      "y": 13,
+      "mirando": "sur",
+      "dialogoId": "dlg-titileo-despacho"
+    }
+  ]
+}

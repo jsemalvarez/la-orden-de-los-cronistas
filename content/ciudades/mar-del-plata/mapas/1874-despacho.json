@@ -1,0 +1,100 @@
+{
+  "id": "mapa-1874-despacho",
+  "nombre": "Despacho del gobernador",
+  "leyenda": {
+    ".": "pasto",
+    ",": "loma",
+    "T": "arbol",
+    "S": "seto",
+    "B": "banco",
+    "r": "reja",
+    "c": "camino",
+    "p": "peatonal",
+    "C": "calle",
+    "~": "agua",
+    "a": "arena",
+    "#": "piedra",
+    "M": "muro",
+    "R": "techo",
+    "t": "torre",
+    "D": "puerta",
+    "G": "porton",
+    "_": "piso",
+    "g": "granza",
+    "=": "muelle",
+    "P": "pared"
+  },
+  "solidos": [
+    "arbol",
+    "seto",
+    "banco",
+    "reja",
+    "agua",
+    "piedra",
+    "muro",
+    "techo",
+    "torre",
+    "porton",
+    "pared"
+  ],
+  "entrada": {
+    "x": 6,
+    "y": 9
+  },
+  "filas": [
+    "PMMMMMMMMMMMMP",
+    "P____________P",
+    "P____________P",
+    "P____________P",
+    "P____________P",
+    "P____________P",
+    "P____________P",
+    "P____________P",
+    "P____________P",
+    "P____________P",
+    "PPPPPPGGPPPPPP"
+  ],
+  "personajes": [
+    {
+      "id": "acosta",
+      "nombre": "Mariano Acosta",
+      "x": 6,
+      "y": 1,
+      "mirando": "sur",
+      "ropa": "contorno",
+      "pelo": "piedraOsc",
+      "dialogoId": "dlg-acosta"
+    },
+    {
+      "id": "carta-original",
+      "nombre": "Un sobre caído",
+      "tipo": "objeto",
+      "sprite": "documento",
+      "x": 2,
+      "y": 4,
+      "mirando": "sur",
+      "dialogoId": "dlg-carta"
+    },
+    {
+      "id": "decreto-falso",
+      "nombre": "Un decreto ya redactado",
+      "tipo": "objeto",
+      "sprite": "documento",
+      "ropa": "violeta",
+      "x": 11,
+      "y": 4,
+      "mirando": "sur",
+      "dialogoId": "dlg-decreto-falso"
+    },
+    {
+      "id": "escribano",
+      "nombre": "Escribano",
+      "x": 10,
+      "y": 7,
+      "mirando": "oeste",
+      "ropa": "azul",
+      "ficticio": true,
+      "dialogoId": "dlg-escribano"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "name": "la-orden-de-los-cronistas",
+  "version": "0.1.0",
+  "description": "La Orden de los Cronistas y el Enigma de Marola — juego educativo de historia urbana",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "check": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^26.6.2",
+    "typescript": "^5.6.3",
+    "vite": "^5.4.10"
+  }
+}

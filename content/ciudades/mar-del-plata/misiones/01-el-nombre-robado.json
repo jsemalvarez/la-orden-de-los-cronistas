@@ -1,0 +1,1074 @@
+{
+  "id": "mision-01-el-nombre-robado",
+  "titulo": "El Nombre Robado",
+  "hecho": {
+    "id": "hecho-nombre-mar-del-plata",
+    "titulo": "El nombre de Mar del Plata",
+    "fecha": "1873-11-14 / 1874-02-10",
+    "versionReal": {
+      "enunciado": "El 10 de febrero de 1874 el gobernador Mariano Acosta reconoció al pueblo dentro del Partido de Balcarce con el nombre Mar del Plata, tal como lo había pedido Patricio Peralta Ramos en su carta del 14 de noviembre de 1873.",
+      "fuentes": [
+        {
+          "cita": "Carta de Patricio Peralta Ramos al gobernador Mariano Acosta, 14 de noviembre de 1873.",
+          "primaria": true
+        },
+        {
+          "cita": "Ministerio de Cultura de la Nación, 'A 146 años de la fundación de Mar del Plata'.",
+          "url": "https://www.cultura.gob.ar/a-146-anos-de-la-fundacion-de-mar-del-plata-10112/"
+        }
+      ]
+    },
+    "versionAlterada": {
+      "enunciado": "El 10 de febrero de 1874 el pueblo quedó asentado como Puerto Balcarce, y así se llamó para siempre.",
+      "metodo": "Impedir que la carta del 14 de noviembre de 1873 llegue al despacho. Sin el pedido, el decreto sale con el nombre administrativo del partido."
+    }
+  },
+  "escenaInicial": "escena-0-presente",
+  "escenaFinal": "escena-f-cierre",
+  "pistasParaResolver": 3,
+  "escenas": [
+    {
+      "id": "escena-0-presente",
+      "titulo": "La Plaza San Martín",
+      "epocaId": "presente",
+      "mapaId": "mapa-presente-plaza"
+    },
+    {
+      "id": "escena-a-saladero",
+      "titulo": "El saladero y el muelle",
+      "epocaId": "1873",
+      "mapaId": "mapa-1873-saladero"
+    },
+    {
+      "id": "escena-b-capilla",
+      "titulo": "La Capilla Santa Cecilia",
+      "epocaId": "1873",
+      "mapaId": "mapa-1873-capilla",
+      "rotulo": "La loma · fines de 1873"
+    },
+    {
+      "id": "escena-c-despacho",
+      "titulo": "El despacho del gobierno",
+      "epocaId": "1874",
+      "mapaId": "mapa-1874-despacho"
+    },
+    {
+      "id": "escena-f-cierre",
+      "titulo": "De vuelta en la plaza",
+      "epocaId": "presente",
+      "mapaId": "mapa-presente-plaza",
+      "entrada": {
+        "x": 15,
+        "y": 19
+      },
+      "ocultar": [
+        "turista"
+      ],
+      "personajes": [
+        {
+          "id": "balbina",
+          "nombre": "Balbina",
+          "x": 15,
+          "y": 18,
+          "mirando": "sur",
+          "ropa": "violeta",
+          "pelo": "piedraOsc",
+          "ficticio": true,
+          "dialogoId": "dlg-balbina-cierre"
+        },
+        {
+          "id": "calendario",
+          "nombre": "El calendario floral",
+          "tipo": "objeto",
+          "sprite": "calendario",
+          "x": 14,
+          "y": 20,
+          "mirando": "sur",
+          "dialogoId": "dlg-calendario-final"
+        }
+      ]
+    }
+  ],
+  "pistas": [
+    {
+      "id": "pista-muelle",
+      "tipo": "verdadera",
+      "texto": "El pueblo ya existía y funcionaba: saladero, muelle de hierro, molino, iglesia de piedra y más de veinte casas. Don Patricio lo puso por escrito para pedir que lo reconocieran.",
+      "fuenteHistorica": "Carta de Patricio Peralta Ramos al gobernador Mariano Acosta, 14 de noviembre de 1873."
+    },
+    {
+      "id": "pista-nombre",
+      "tipo": "verdadera",
+      "texto": "Peralta Ramos eligió el nombre él mismo y lo pidió expresamente. Sin ese pedido, al pueblo le habrían puesto el nombre del partido: Puerto Balcarce.",
+      "fuenteHistorica": "Carta del 14 de noviembre de 1873; decreto del gobernador Mariano Acosta del 10 de febrero de 1874."
+    },
+    {
+      "id": "pista-carta",
+      "tipo": "verdadera",
+      "texto": "La carta existe y está fechada el 14 de noviembre de 1873. Pide fundar el pueblo, dona los terrenos públicos y propone el nombre Mar del Plata.",
+      "fuenteHistorica": "Carta de Patricio Peralta Ramos al gobernador Mariano Acosta, 14 de noviembre de 1873."
+    },
+    {
+      "id": "pista-siempre-balcarce",
+      "tipo": "falsa",
+      "texto": "Acá el puerto siempre se llamó Puerto Balcarce. Nadie le dijo nunca de otra manera."
+    },
+    {
+      "id": "pista-nombres-viejos",
+      "tipo": "ruido",
+      "texto": "Antes a esta costa le decían la Lobería Grande, y en los mapas viejos figuraba como País del Diablo."
+    },
+    {
+      "id": "pista-serranos",
+      "tipo": "ruido",
+      "texto": "Los de la sierra y los de la costa vienen peleados hace años por la cabecera del Partido de Balcarce."
+    },
+    {
+      "id": "pista-dos-decretos",
+      "tipo": "ruido",
+      "texto": "Sobre el escritorio del gobernador hay dos versiones del decreto. Una de las dos no tendría que estar ahí."
+    }
+  ],
+  "dialogos": [
+    {
+      "id": "dlg-turista",
+      "inicio": "u1",
+      "nodos": [
+        {
+          "id": "u1",
+          "hablante": "Turista",
+          "texto": "¿Me sacás una foto con el calendario? Es la obligatoria, no me puedo ir sin ella.",
+          "siguiente": "u2"
+        },
+        {
+          "id": "u2",
+          "hablante": "Turista",
+          "texto": "Hoy {fecha}. Lo rellenan a mano, con polvo de ladrillo, todos los días a las cinco de la mañana. Todos los días.",
+          "siguiente": "u3"
+        },
+        {
+          "id": "u3",
+          "hablante": "Turista",
+          "texto": "{anios} años tiene la ciudad. Y ahí lo dice, en el piso, en letras de tierra."
+        }
+      ]
+    },
+    {
+      "id": "dlg-calendario",
+      "inicio": "c1",
+      "nodos": [
+        {
+          "id": "c1",
+          "texto": "Canteros de granza escalonados, uno arriba del otro. Las letras son de polvo de ladrillo, rellenadas a mano.",
+          "siguiente": "c2"
+        },
+        {
+          "id": "c2",
+          "texto": "Arriba dice la fecha: {fecha}.",
+          "siguiente": "c3"
+        },
+        {
+          "id": "c3",
+          "texto": "Abajo, en letras grandes: MAR DEL PLATA. Y más abajo todavía: {anios} AÑOS.",
+          "siguiente": "c4"
+        },
+        {
+          "id": "c4",
+          "texto": "Parpadeás. Por medio segundo las letras del cantero grande dicen otra cosa: PUERTO BALCARCE.",
+          "efectos": [
+            {
+              "tipo": "establecerBandera",
+              "bandera": "vio-anomalia",
+              "valor": true
+            }
+          ],
+          "siguiente": "c5"
+        },
+        {
+          "id": "c5",
+          "texto": "Volvés a mirar y dice Mar del Plata. El turista sigue sonriendo a la cámara. No se dio cuenta de nada.",
+          "siguiente": "c6"
+        },
+        {
+          "id": "c6",
+          "texto": "Sentís un chispazo tibio en la nuca. Del otro lado del cantero hay una mujer que hace rato no te saca los ojos de encima."
+        }
+      ]
+    },
+    {
+      "id": "dlg-calendario-final",
+      "inicio": "f1",
+      "nodos": [
+        {
+          "id": "f1",
+          "texto": "El cantero grande dice, sin titilar, con las letras bien rellenadas: {nombreVigente}.",
+          "siguiente": "f2"
+        },
+        {
+          "id": "f2",
+          "texto": "Y abajo: {anios} AÑOS. Hoy, {fecha}."
+        }
+      ]
+    },
+    {
+      "id": "dlg-balbina",
+      "inicio": "b1",
+      "nodos": [
+        {
+          "id": "b1",
+          "hablante": "Balbina",
+          "texto": "Te estaba esperando. Tardaste menos de lo que pensaba.",
+          "opciones": [
+            {
+              "texto": "El calendario cambió. Lo vi.",
+              "destino": "b3",
+              "requiere": [
+                "vio-anomalia"
+              ]
+            },
+            {
+              "texto": "No sé de qué me hablás.",
+              "destino": "b2"
+            }
+          ]
+        },
+        {
+          "id": "b2",
+          "hablante": "Balbina",
+          "texto": "Entonces todavía no te pasó. Andá hasta el calendario, el de los canteros. Miralo bien. Volvé cuando te haya pasado."
+        },
+        {
+          "id": "b3",
+          "hablante": "Balbina",
+          "texto": "Lo viste titilar. Un nombre encima del otro. Y el que estaba al lado tuyo no vio nada.",
+          "siguiente": "b4"
+        },
+        {
+          "id": "b4",
+          "hablante": "Balbina",
+          "texto": "Eso que tenés se llama la Chispa. Salta cuando la historia fue tocada. La tiene muy poca gente. A los que la tienen les decimos Sensibles.",
+          "siguiente": "b5"
+        },
+        {
+          "id": "b5",
+          "hablante": "Balbina",
+          "texto": "Yo soy Balbina, de la Orden de los Cronistas. Nos dedicamos a que las ciudades se sigan pareciendo a lo que de verdad les pasó.",
+          "siguiente": "b6"
+        },
+        {
+          "id": "b6",
+          "hablante": "Balbina",
+          "texto": "Y en {ciudad} tenemos un problema que se llama Marola. No borra la historia: la reescribe. Cambia un dato acá, otro allá, y todos siguen como si nada.",
+          "siguiente": "b7"
+        },
+        {
+          "id": "b7",
+          "hablante": "Balbina",
+          "texto": "Esta vez fue por el nombre. Si Marola se sale con la suya, ese cantero va a decir {nombreAlterado} desde siempre, y nadie va a extrañar el otro nombre. Ni vos.",
+          "siguiente": "b8"
+        },
+        {
+          "id": "b8",
+          "hablante": "Balbina",
+          "texto": "Tomá. Tres Gemas, cargadas. Con esto se viaja. Cuidalas: se gastan al saltar y se gastan al moverte, y sólo se recargan solas, con el tiempo.",
+          "efectos": [
+            {
+              "tipo": "otorgarGemas",
+              "cantidad": 3
+            }
+          ],
+          "siguiente": "b9"
+        },
+        {
+          "id": "b9",
+          "hablante": "Balbina",
+          "texto": "Si te quedás sin Gemas antes de arreglarlo, el cambio queda. No para todos: para vos. Vas a volver a una ciudad que nunca se llamó como se llamaba.",
+          "siguiente": "b10"
+        },
+        {
+          "id": "b10",
+          "hablante": "Balbina",
+          "texto": "El decreto se firma el 10 de febrero de 1874. Pero no arranques por ahí: arrancá antes, en el puerto, cuando el pueblo era humo de saladero. ¿Vamos?",
+          "opciones": [
+            {
+              "texto": "Vamos a 1873.",
+              "destino": "b11",
+              "efectos": [
+                {
+                  "tipo": "irAEscena",
+                  "escenaId": "escena-a-saladero"
+                }
+              ]
+            },
+            {
+              "texto": "Dame un minuto.",
+              "destino": "b12"
+            }
+          ]
+        },
+        {
+          "id": "b11",
+          "hablante": "Balbina",
+          "texto": "No alcanzan las Gemas para un salto tan largo. Esperá a que carguen un poco más."
+        },
+        {
+          "id": "b12",
+          "hablante": "Balbina",
+          "texto": "Tomate el minuto. Pero el 10 de febrero llega igual, con vos o sin vos."
+        }
+      ]
+    },
+    {
+      "id": "dlg-capataz",
+      "inicio": "p1",
+      "nodos": [
+        {
+          "id": "p1",
+          "hablante": "Capataz del saladero",
+          "texto": "¿Buscás a alguien? Acá se trabaja desde que aclara.",
+          "siguiente": "p2"
+        },
+        {
+          "id": "p2",
+          "hablante": "Capataz del saladero",
+          "texto": "Esto es el saladero. Por ese muelle de hierro sale todo lo que sacamos. Hay molino, hay panadería, hay herrería. Más de veinte casas hay.",
+          "siguiente": "p3"
+        },
+        {
+          "id": "p3",
+          "hablante": "Capataz del saladero",
+          "texto": "Don Patricio lo anotó todo en una carta para el gobernador. Que si el pueblo ya existe, lo tienen que reconocer.",
+          "efectos": [
+            {
+              "tipo": "otorgarPista",
+              "pistaId": "pista-muelle"
+            }
+          ],
+          "siguiente": "p4"
+        },
+        {
+          "id": "p4",
+          "hablante": "Capataz del saladero",
+          "texto": "Y dice que el nombre lo quiere elegir él.",
+          "opciones": [
+            {
+              "texto": "¿Qué nombre?",
+              "destino": "p5"
+            },
+            {
+              "texto": "¿Dónde lo encuentro?",
+              "destino": "p6"
+            }
+          ]
+        },
+        {
+          "id": "p5",
+          "hablante": "Capataz del saladero",
+          "texto": "Eso preguntáselo a él. Yo salo cueros.",
+          "siguiente": "p6"
+        },
+        {
+          "id": "p6",
+          "hablante": "Capataz del saladero",
+          "texto": "Arriba, en la loma, al lado de la capilla de piedra. Se pasa las tardes ahí."
+        }
+      ]
+    },
+    {
+      "id": "dlg-marinero",
+      "inicio": "m1",
+      "nodos": [
+        {
+          "id": "m1",
+          "hablante": "Marinero",
+          "texto": "Vos no sos de acá.",
+          "siguiente": "m2"
+        },
+        {
+          "id": "m2",
+          "hablante": "Marinero",
+          "texto": "Esto es Puerto Balcarce. Siempre se llamó así. Preguntale a cualquiera y te va a decir lo mismo.",
+          "efectos": [
+            {
+              "tipo": "otorgarPista",
+              "pistaId": "pista-siempre-balcarce"
+            }
+          ],
+          "siguiente": "m3"
+        },
+        {
+          "id": "m3",
+          "hablante": "Marinero",
+          "texto": "Si alguien te dice otra cosa, te está mintiendo.",
+          "siguiente": "m4"
+        },
+        {
+          "id": "m4",
+          "texto": "Lo dice sin pensarlo, como quien repite algo que aprendió de memoria. Ni te preguntó cómo te llamabas."
+        }
+      ]
+    },
+    {
+      "id": "dlg-pescador",
+      "inicio": "q1",
+      "nodos": [
+        {
+          "id": "q1",
+          "hablante": "Pescador viejo",
+          "texto": "Setenta años tengo mirando esta misma agua.",
+          "siguiente": "q2"
+        },
+        {
+          "id": "q2",
+          "hablante": "Pescador viejo",
+          "texto": "Antes a esto le decían la Lobería Grande. Y en los mapas de los ingleses figuraba como País del Diablo, ¿sabías?",
+          "efectos": [
+            {
+              "tipo": "otorgarPista",
+              "pistaId": "pista-nombres-viejos"
+            }
+          ],
+          "siguiente": "q3"
+        },
+        {
+          "id": "q3",
+          "hablante": "Pescador viejo",
+          "texto": "Nombres. Todos vienen y le ponen un nombre, y después se van."
+        }
+      ]
+    },
+    {
+      "id": "dlg-titileo-capilla",
+      "inicio": "t1",
+      "nodos": [
+        {
+          "id": "t1",
+          "texto": "El aire titila acá, igual que el calendario de la plaza.",
+          "siguiente": "t2"
+        },
+        {
+          "id": "t2",
+          "texto": "Del otro lado se oye viento de loma y una campana chica.",
+          "siguiente": "t3"
+        },
+        {
+          "id": "t3",
+          "texto": "Del otro lado es la capilla, unos meses más tarde.",
+          "opciones": [
+            {
+              "texto": "Dejarte llevar.",
+              "destino": "t4",
+              "efectos": [
+                {
+                  "tipo": "irAEscena",
+                  "escenaId": "escena-b-capilla"
+                }
+              ]
+            },
+            {
+              "texto": "Todavía no.",
+              "destino": "t5"
+            }
+          ]
+        },
+        {
+          "id": "t4",
+          "texto": "La hendija se cierra. Las Gemas no alcanzaron para cruzarla."
+        },
+        {
+          "id": "t5",
+          "texto": "La hendija sigue ahí, esperando."
+        }
+      ]
+    },
+    {
+      "id": "dlg-peralta-ramos",
+      "inicio": "r1",
+      "nodos": [
+        {
+          "id": "r1",
+          "hablante": "Patricio Peralta Ramos",
+          "texto": "Buenas tardes. ¿Vino por la capilla?",
+          "siguiente": "r2"
+        },
+        {
+          "id": "r2",
+          "hablante": "Patricio Peralta Ramos",
+          "texto": "La levanté yo. Piedra de acá y cal. Las vigas del techo salieron de una goleta inglesa que encalló en Punta Iglesia; el altar también.",
+          "siguiente": "r3"
+        },
+        {
+          "id": "r3",
+          "hablante": "Patricio Peralta Ramos",
+          "texto": "Es el único edificio de piedra y cal en leguas a la redonda. Desde acá arriba se ve todo el pueblo.",
+          "siguiente": "r4"
+        },
+        {
+          "id": "r4",
+          "hablante": "Patricio Peralta Ramos",
+          "texto": "Se llama Santa Cecilia. Como mi mujer. Cecilia Robles.",
+          "opciones": [
+            {
+              "texto": "Lo acompaño en el sentimiento.",
+              "destino": "r5"
+            },
+            {
+              "texto": "¿Y el pueblo, señor?",
+              "destino": "r6"
+            }
+          ]
+        },
+        {
+          "id": "r5",
+          "hablante": "Patricio Peralta Ramos",
+          "texto": "Doce años hace. Uno levanta una piedra para que quede algo con el nombre puesto.",
+          "siguiente": "r6"
+        },
+        {
+          "id": "r6",
+          "hablante": "Patricio Peralta Ramos",
+          "texto": "El pueblo ya existe. Saladero, muelle de hierro, molino, panadería, herrería, más de veinte casas. Lo que no existe es en los papeles.",
+          "siguiente": "r7"
+        },
+        {
+          "id": "r7",
+          "hablante": "Patricio Peralta Ramos",
+          "texto": "Le escribí al gobernador Acosta en noviembre. Le pedí la licencia para fundarlo y le ofrecí los terrenos: cementerio, iglesia, hospital, escuela y juzgado. Todo donado.",
+          "siguiente": "r8"
+        },
+        {
+          "id": "r8",
+          "hablante": "Patricio Peralta Ramos",
+          "texto": "Y le pedí una cosa más.",
+          "siguiente": "r9"
+        },
+        {
+          "id": "r9",
+          "hablante": "Patricio Peralta Ramos",
+          "texto": "Que se llame Mar del Plata. Lo escribí de mi puño, en esa misma carta.",
+          "efectos": [
+            {
+              "tipo": "otorgarPista",
+              "pistaId": "pista-nombre"
+            }
+          ],
+          "siguiente": "r10"
+        },
+        {
+          "id": "r10",
+          "hablante": "Patricio Peralta Ramos",
+          "texto": "Porque si no lo pido yo, le van a poner el nombre del partido y se acabó. Puerto Balcarce. Y un pueblo no puede llamarse igual que el trámite que lo creó.",
+          "siguiente": "r11"
+        },
+        {
+          "id": "r11",
+          "hablante": "Patricio Peralta Ramos",
+          "texto": "Salió hace tres meses. Todavía no me contestaron.",
+          "opciones": [
+            {
+              "texto": "¿Está seguro de que llegó?",
+              "destino": "r12"
+            },
+            {
+              "texto": "Le va a llegar.",
+              "destino": "r13"
+            }
+          ]
+        },
+        {
+          "id": "r12",
+          "hablante": "Patricio Peralta Ramos",
+          "texto": "La despaché yo mismo. Pero de acá a La Plata hay mucho campo, y una carta es una carta.",
+          "siguiente": "r13"
+        },
+        {
+          "id": "r13",
+          "hablante": "Patricio Peralta Ramos",
+          "texto": "Si alguna vez se cruza con ese papel, joven, acérquelo al escritorio. Es lo único que le pido."
+        }
+      ]
+    },
+    {
+      "id": "dlg-vecino",
+      "inicio": "v1",
+      "nodos": [
+        {
+          "id": "v1",
+          "hablante": "Vecino de la sierra",
+          "texto": "¿Usted también viene a hacer pueblo acá abajo?",
+          "siguiente": "v2"
+        },
+        {
+          "id": "v2",
+          "hablante": "Vecino de la sierra",
+          "texto": "Yo soy de la sierra. De Balcarce. El partido es uno solo y la cabecera está allá arriba, donde estuvo siempre.",
+          "siguiente": "v3"
+        },
+        {
+          "id": "v3",
+          "hablante": "Vecino de la sierra",
+          "texto": "Esto de la costa son cuatro casas y un saladero que apesta a cuero. Y ahora quieren nombre propio, y juzgado, y escuela.",
+          "efectos": [
+            {
+              "tipo": "otorgarPista",
+              "pistaId": "pista-serranos"
+            }
+          ],
+          "siguiente": "v4"
+        },
+        {
+          "id": "v4",
+          "hablante": "Vecino de la sierra",
+          "texto": "Los de la costa y los de la sierra venimos peleados hace años. Y no lo vamos a arreglar hoy."
+        }
+      ]
+    },
+    {
+      "id": "dlg-encapuchada",
+      "inicio": "e1",
+      "nodos": [
+        {
+          "id": "e1",
+          "texto": "Una figura quieta al costado del sendero, de espaldas. Con este viento, la capa no se le mueve.",
+          "siguiente": "e2"
+        },
+        {
+          "id": "e2",
+          "texto": "La Chispa te arde en la nuca.",
+          "opciones": [
+            {
+              "texto": "Acercarte.",
+              "destino": "e3",
+              "efectos": [
+                {
+                  "tipo": "gastarGemas",
+                  "cantidad": 2
+                }
+              ]
+            },
+            {
+              "texto": "Seguir de largo.",
+              "destino": "e5"
+            }
+          ]
+        },
+        {
+          "id": "e3",
+          "hablante": "Marola",
+          "texto": "Qué bien que viniste. Vos también te diste cuenta de que el nombre no encaja, ¿no? De que suena puesto.",
+          "siguiente": "e4"
+        },
+        {
+          "id": "e4",
+          "texto": "Cuando volvés en vos estás tres pasos más atrás, no le viste la cara, y las Gemas te pesan menos en el bolsillo."
+        },
+        {
+          "id": "e5",
+          "texto": "Al pasar de largo sentís frío. Cuando mirás para atrás no hay nadie, y el pasto de ahí está intacto."
+        }
+      ]
+    },
+    {
+      "id": "dlg-titileo-despacho",
+      "inicio": "d1",
+      "nodos": [
+        {
+          "id": "d1",
+          "texto": "Otra hendija. Esta es más grande y está más quieta, como si ya hubiera pasado por acá alguien más.",
+          "siguiente": "d2"
+        },
+        {
+          "id": "d2",
+          "texto": "Del otro lado se escucha una pluma raspando un papel.",
+          "siguiente": "d3"
+        },
+        {
+          "id": "d3",
+          "texto": "Del otro lado es el 10 de febrero de 1874.",
+          "opciones": [
+            {
+              "texto": "Dejarte llevar.",
+              "destino": "d4",
+              "efectos": [
+                {
+                  "tipo": "irAEscena",
+                  "escenaId": "escena-c-despacho"
+                }
+              ]
+            },
+            {
+              "texto": "Todavía no.",
+              "destino": "d5"
+            }
+          ]
+        },
+        {
+          "id": "d4",
+          "texto": "La hendija se cierra. Las Gemas no alcanzaron para cruzarla."
+        },
+        {
+          "id": "d5",
+          "texto": "La pluma del otro lado sigue raspando."
+        }
+      ]
+    },
+    {
+      "id": "dlg-carta",
+      "inicio": "k1",
+      "nodos": [
+        {
+          "id": "k1",
+          "texto": "Un sobre caído detrás del escritorio, contra el zócalo. Tiene polvo encima.",
+          "siguiente": "k2"
+        },
+        {
+          "id": "k2",
+          "texto": "Está fechado el 14 de noviembre de 1873. Es de Patricio Peralta Ramos. Nunca se abrió.",
+          "siguiente": "k3"
+        },
+        {
+          "id": "k3",
+          "texto": "Pide licencia para fundar el pueblo. Enumera el saladero, el muelle de hierro, el molino, la iglesia de piedra, las veinte casas. Dona los terrenos del cementerio, la iglesia, el hospital, la escuela y el juzgado.",
+          "siguiente": "k4"
+        },
+        {
+          "id": "k4",
+          "texto": "Y pide un nombre. Escrito de su puño y letra: Mar del Plata.",
+          "efectos": [
+            {
+              "tipo": "otorgarPista",
+              "pistaId": "pista-carta"
+            }
+          ],
+          "siguiente": "k5"
+        },
+        {
+          "id": "k5",
+          "texto": "No se cayó sola. Alguien la puso acá atrás, con cuidado, para que no se viera."
+        }
+      ]
+    },
+    {
+      "id": "dlg-decreto-falso",
+      "inicio": "x1",
+      "nodos": [
+        {
+          "id": "x1",
+          "texto": "Un decreto ya redactado, prolijo, esperando la firma.",
+          "siguiente": "x2"
+        },
+        {
+          "id": "x2",
+          "texto": "Dice: el pueblo del Partido de Balcarce se denominará Puerto Balcarce, y así constará en adelante y para siempre.",
+          "siguiente": "x3"
+        },
+        {
+          "id": "x3",
+          "texto": "La tinta está seca hace rato. Pero la Chispa te quema la nuca y los bordes del papel titilan.",
+          "siguiente": "x4"
+        },
+        {
+          "id": "x4",
+          "texto": "\"Y para siempre\" no es una fórmula que use un escribano.",
+          "opciones": [
+            {
+              "texto": "Dejarlo donde está.",
+              "destino": "x5"
+            },
+            {
+              "texto": "Acercárselo al gobernador.",
+              "destino": "x6",
+              "efectos": [
+                {
+                  "tipo": "avanzarCorrupcion",
+                  "cantidad": 2
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "x5",
+          "texto": "Lo dejás donde estaba. Sigue titilando, esperando otra mano."
+        },
+        {
+          "id": "x6",
+          "texto": "Le ponés en la mano el papel de Marola. El titileo se apaga: ya no hace falta disimular."
+        }
+      ]
+    },
+    {
+      "id": "dlg-escribano",
+      "inicio": "n1",
+      "nodos": [
+        {
+          "id": "n1",
+          "hablante": "Escribano",
+          "texto": "No tendría que estar hablando de esto con nadie.",
+          "siguiente": "n2"
+        },
+        {
+          "id": "n2",
+          "hablante": "Escribano",
+          "texto": "Hay dos versiones del decreto dando vueltas. Dos. Y yo copié una sola.",
+          "efectos": [
+            {
+              "tipo": "otorgarPista",
+              "pistaId": "pista-dos-decretos"
+            }
+          ],
+          "siguiente": "n3"
+        },
+        {
+          "id": "n3",
+          "hablante": "Escribano",
+          "texto": "La que copié no la trajo nadie del Departamento Topográfico. Estaba. Apareció sobre la mesa, ya escrita.",
+          "siguiente": "n4"
+        },
+        {
+          "id": "n4",
+          "hablante": "Escribano",
+          "texto": "Y hace tres meses que esperamos una carta que, me dicen, nunca llegó."
+        }
+      ]
+    },
+    {
+      "id": "dlg-acosta",
+      "inicio": "a1",
+      "nodos": [
+        {
+          "id": "a1",
+          "hablante": "Mariano Acosta",
+          "texto": "Tengo la pluma en la mano. ¿Qué es lo que quiere?",
+          "opciones": [
+            {
+              "texto": "Antes de firmar, lea esta carta.",
+              "destino": "a3",
+              "requiere": [
+                "pistas-completas"
+              ]
+            },
+            {
+              "texto": "¿Qué nombre va a poner?",
+              "destino": "a2"
+            },
+            {
+              "texto": "Acá siempre le dijeron Puerto Balcarce.",
+              "destino": "a8",
+              "efectos": [
+                {
+                  "tipo": "avanzarCorrupcion",
+                  "cantidad": 1
+                }
+              ]
+            },
+            {
+              "texto": "Nada, señor. Disculpe.",
+              "destino": "a7"
+            }
+          ]
+        },
+        {
+          "id": "a2",
+          "hablante": "Mariano Acosta",
+          "texto": "El que corresponde. El pueblo queda en el Partido de Balcarce, de modo que Puerto Balcarce. Nadie me pidió otra cosa.",
+          "siguiente": "a1"
+        },
+        {
+          "id": "a3",
+          "hablante": "Mariano Acosta",
+          "texto": "¿Y esto de dónde salió? Está fechada en noviembre. Tres meses tiene este sobre.",
+          "siguiente": "a4"
+        },
+        {
+          "id": "a4",
+          "hablante": "Mariano Acosta",
+          "texto": "El hombre describe un pueblo entero. Saladero, muelle de hierro, molino, una iglesia de piedra. Y dona los terrenos del hospital y de la escuela.",
+          "siguiente": "a5"
+        },
+        {
+          "id": "a5",
+          "hablante": "Mariano Acosta",
+          "texto": "Y pide un nombre. Mar del Plata.",
+          "siguiente": "a6"
+        },
+        {
+          "id": "a6",
+          "hablante": "Mariano Acosta",
+          "texto": "Si el hombre levantó el pueblo y dona la tierra, el nombre lo pone él. Que se asiente así, y que conste la fecha: 10 de febrero de 1874.",
+          "efectos": [
+            {
+              "tipo": "resolverMision",
+              "resultado": "restaurada"
+            }
+          ]
+        },
+        {
+          "id": "a7",
+          "hablante": "Mariano Acosta",
+          "texto": "Entonces retírese, que tengo que firmar."
+        },
+        {
+          "id": "a8",
+          "hablante": "Mariano Acosta",
+          "texto": "Siempre, dice. Entonces no hay nada que discutir.",
+          "siguiente": "a1"
+        }
+      ]
+    },
+    {
+      "id": "dlg-balbina-cierre",
+      "inicio": "z1",
+      "nodos": [
+        {
+          "id": "z1",
+          "hablante": "Balbina",
+          "texto": "Volviste. Yo no me moví de acá: para mí pasaron once minutos.",
+          "opciones": [
+            {
+              "texto": "Llegó la carta. Quedó Mar del Plata.",
+              "destino": "z2",
+              "requiere": [
+                "mision-restaurada"
+              ]
+            },
+            {
+              "texto": "No llegué a tiempo.",
+              "destino": "z5",
+              "requiere": [
+                "mision-alterada"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "z2",
+          "hablante": "Balbina",
+          "texto": "Andá a mirar el cantero. Dale, andá.",
+          "siguiente": "z3"
+        },
+        {
+          "id": "z3",
+          "hablante": "Balbina",
+          "texto": "Ahí está. Sin titilar. {nombreVigente}, {anios} años, y mañana a las cinco de la mañana alguien va a venir a rellenar la fecha de nuevo.",
+          "siguiente": "z4"
+        },
+        {
+          "id": "z4",
+          "hablante": "Balbina",
+          "texto": "No lo sabe nadie. No te lo va a agradecer nadie. Así es el trabajo.",
+          "siguiente": "z7"
+        },
+        {
+          "id": "z5",
+          "hablante": "Balbina",
+          "texto": "Ya sé. Mirá el cantero.",
+          "siguiente": "z6"
+        },
+        {
+          "id": "z6",
+          "hablante": "Balbina",
+          "texto": "Dice {nombreVigente}. Y para todos los que pasan por acá dijo eso desde 1874. Sos el único que se acuerda de la otra versión. Eso duele, y es parte del trabajo también.",
+          "siguiente": "z7"
+        },
+        {
+          "id": "z7",
+          "hablante": "Balbina",
+          "texto": "Descansá. Las Gemas cargan solas mientras no las uses.",
+          "siguiente": "z8"
+        },
+        {
+          "id": "z8",
+          "hablante": "Balbina",
+          "texto": "Una cosa más. Marola no se va a quedar tranquila con esto.",
+          "siguiente": "z9"
+        },
+        {
+          "id": "z9",
+          "hablante": "Balbina",
+          "texto": "En 1877 desembarca un vasco llamado Pedro Luro y se hace cargo del saladero. Ahí arranca todo de nuevo. Y ya hay algo raro en esa fecha."
+        }
+      ]
+    },
+    {
+      "id": "dlg-placa-catedral",
+      "inicio": "pc1",
+      "nodos": [
+        {
+          "id": "pc1",
+          "texto": "Una placa de bronce al lado de la puerta.",
+          "siguiente": "pc2"
+        },
+        {
+          "id": "pc2",
+          "texto": "CATEDRAL DE LOS SANTOS PEDRO Y CECILIA. Santa Cecilia es patrona de Mar del Plata desde el 18 de noviembre de 1897.",
+          "siguiente": "pc3"
+        },
+        {
+          "id": "pc3",
+          "texto": "Cecilia. El mismo nombre que la capilla de piedra que Peralta Ramos levantó en la loma en 1873, por su mujer."
+        }
+      ]
+    },
+    {
+      "id": "dlg-placa-teatro",
+      "inicio": "pt1",
+      "nodos": [
+        {
+          "id": "pt1",
+          "texto": "TEATRO COLÓN. Inaugurado en 1924. Proyecto del arquitecto Ángel Pascual; la obra la hizo Martín Marco.",
+          "siguiente": "pt2"
+        },
+        {
+          "id": "pt2",
+          "texto": "Nació de la Sociedad Española, que los españoles de la ciudad fundaron el 15 de octubre de 1882 porque querían un teatro abierto todo el año, no sólo en temporada.",
+          "siguiente": "pt3"
+        },
+        {
+          "id": "pt3",
+          "texto": "Cincuenta años después de la carta de don Patricio, el pueblo ya tenía teatro propio."
+        }
+      ]
+    },
+    {
+      "id": "dlg-placa-muni",
+      "inicio": "pm1",
+      "nodos": [
+        {
+          "id": "pm1",
+          "texto": "PALACIO MUNICIPAL. Proyecto del arquitecto Alejandro Bustillo, construido por Luis Falcone. Empezado en 1937, inaugurado en noviembre de 1938.",
+          "siguiente": "pm2"
+        },
+        {
+          "id": "pm2",
+          "texto": "Reproduce la arquitectura florentina del siglo XV. La torre del reloj mide cuarenta metros.",
+          "siguiente": "pm3"
+        },
+        {
+          "id": "pm3",
+          "texto": "Adentro de ese edificio están los papeles de la ciudad. Todos los decretos, todas las actas, todas las fechas. Marola debe conocerlo bien."
+        }
+      ]
+    },
+    {
+      "id": "dlg-cartel-luro",
+      "inicio": "cl1",
+      "nodos": [
+        {
+          "id": "cl1",
+          "texto": "Un cartel de chapa en la esquina. Dice: AV. PEDRO LURO.",
+          "siguiente": "cl2"
+        },
+        {
+          "id": "cl2",
+          "texto": "Una avenida entera con nombre de persona. Alguien hizo algo acá para que se lo pongan.",
+          "siguiente": "cl3"
+        },
+        {
+          "id": "cl3",
+          "texto": "La Chispa no se mueve. Este nombre está bien puesto. Todavía no sabés de quién es."
+        }
+      ]
+    }
+  ]
+}

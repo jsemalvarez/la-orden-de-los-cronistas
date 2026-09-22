@@ -1,0 +1,15 @@
+{
+  "id": "mar-del-plata",
+  "nombre": "Mar del Plata",
+  "anioFundacion": 1874,
+  "nombreAlterado": "PUERTO BALCARCE",
+  "villano": {
+    "nombre": "Marola",
+    "descripcion": "No borra la historia: la reescribe. Cambia hechos puntuales por versiones falsas pero creíbles, para que exista otra Mar del Plata en lugar de la real."
+  },
+  "epocas": [
+    { "id": "presente", "rotulo": "Mar del Plata · hoy", "anio": 2026 },
+    { "id": "1873", "rotulo": "Laguna de los Padres · 1873", "anio": 1873 },
+    { "id": "1874", "rotulo": "La Plata · 10 de febrero de 1874", "anio": 1874 }
+  ]
+}

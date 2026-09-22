@@ -1,0 +1,102 @@
+{
+  "id": "mapa-1873-saladero",
+  "nombre": "El saladero y el muelle",
+  "leyenda": {
+    ".": "pasto",
+    ",": "loma",
+    "T": "arbol",
+    "S": "seto",
+    "B": "banco",
+    "r": "reja",
+    "c": "camino",
+    "p": "peatonal",
+    "C": "calle",
+    "~": "agua",
+    "a": "arena",
+    "#": "piedra",
+    "M": "muro",
+    "R": "techo",
+    "t": "torre",
+    "D": "puerta",
+    "_": "piso",
+    "g": "granza",
+    "=": "muelle"
+  },
+  "solidos": [
+    "arbol",
+    "seto",
+    "banco",
+    "reja",
+    "agua",
+    "piedra",
+    "muro",
+    "techo",
+    "torre"
+  ],
+  "entrada": {
+    "x": 4,
+    "y": 14
+  },
+  "filas": [
+    "~~~~~~~~~~~~~~~~~~",
+    "~~~~~~~~~~~~~~~~~~",
+    "~~~~~~=====~~~~~~~",
+    "aaaaaa=====aaaaaaa",
+    "aaaaaa=====aaaaaaa",
+    "aaaaaaaaaaaaaaaaaa",
+    "....c.............",
+    "..#######.........",
+    "..#_____#...T.....",
+    "..#_____#......T..",
+    "..##D####.........",
+    "....c.............",
+    "....c........T....",
+    ".T..c...........T.",
+    "....c.............",
+    ".................."
+  ],
+  "personajes": [
+    {
+      "id": "capataz",
+      "nombre": "Capataz del saladero",
+      "x": 4,
+      "y": 9,
+      "mirando": "sur",
+      "ropa": "maderaOsc",
+      "ficticio": true,
+      "dialogoId": "dlg-capataz"
+    },
+    {
+      "id": "marinero",
+      "nombre": "Marinero",
+      "x": 8,
+      "y": 4,
+      "mirando": "sur",
+      "ropa": "azul",
+      "ficticio": true,
+      "dialogoId": "dlg-marinero"
+    },
+    {
+      "id": "pescador",
+      "nombre": "Pescador viejo",
+      "x": 13,
+      "y": 5,
+      "mirando": "oeste",
+      "ropa": "piedraOsc",
+      "pelo": "blanco",
+      "ficticio": true,
+      "dialogoId": "dlg-pescador"
+    },
+    {
+      "id": "titileo-capilla",
+      "nombre": "Un titileo en el aire",
+      "tipo": "objeto",
+      "sprite": "brillo",
+      "ropa": "aguaClara",
+      "x": 14,
+      "y": 11,
+      "mirando": "sur",
+      "dialogoId": "dlg-titileo-capilla"
+    }
+  ]
+}
