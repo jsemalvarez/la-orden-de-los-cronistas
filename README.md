@@ -21,6 +21,19 @@ npm run dev
 Desde la consola del navegador: `cronistas.partida`, `cronistas.escena.diagnostico`,
 `cronistas.reiniciar()`.
 
+## Publicar la demo
+
+El juego es estático: no necesita servidor ni base de datos. Cada push a `main`
+lo publica en GitHub Pages con `.github/workflows/deploy.yml`.
+
+**Para habilitarlo la primera vez:** en el repo, Settings → Pages → Source:
+**GitHub Actions**. Después de eso, cada push publica solo.
+
+Queda en https://jsemalvarez.github.io/la-orden-de-los-cronistas/
+
+El build usa `base: './'`, o sea rutas relativas, así que funciona igual servido
+desde la raíz de un dominio o desde un subdirectorio.
+
 ## Cómo está armado
 
 ```
