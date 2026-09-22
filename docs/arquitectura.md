@@ -39,7 +39,7 @@ src/motor/
   contenido.ts    carga y valida JSON (integridad referencial)
   bucle.ts        game loop
   entrada.ts      teclado + táctil
-  pantalla.ts     canvas, escalado entero, paleta con nombres
+  pantalla.ts     canvas, escalado al contenedor, paleta con nombres
   mapa.ts         catálogo de casillas, dibujo y colisiones
   actor.ts        movimiento por casillas y sprites (personas y objetos)
   dialogo.ts      máquina de diálogo con efectos
@@ -47,7 +47,7 @@ src/motor/
   estado.ts       partida, línea temporal personal, guardado
 
 src/juego/        escenas concretas
-src/ui/           caja de texto estilo GB, HUD de Gemas
+src/ui/           caja de texto estilo GB, HUD de Gemas, mando táctil
 docs/historia/    respaldo histórico de cada misión  ← obligatorio
 ```
 
@@ -128,7 +128,8 @@ escena de apertura y la del epílogo, con otra gente y otros diálogos adentro.
 | Cero dependencias de runtime | Menos superficie, build instantáneo, nada que se pudra en 3 años |
 | Identificadores de dominio en español | `Gema`, `Pista`, `Cronista`, `Sensible` son el dominio. Traducirlos sería peor. Lo genérico (`update`, `render`) queda en inglés. |
 | Gemas con `cargadaDesde` (timestamp), no un contador | La regla "cuanto más cargó, más rinde" exige tiempo real, no un número |
-| Escalado entero del canvas | Que los píxeles se vean cuadrados y nítidos, como en la Game Boy |
+| Escalado entero del canvas de 2x para arriba | Los píxeles quedan cuadrados y nítidos, como en la Game Boy. Abajo de 2x se estira sin redondear: en un celular, que el diálogo se lea vale más que la nitidez |
+| El mando táctil escribe en el mismo `Entrada` que el teclado | El motor no tiene que saber si el paso lo dio una flecha o un pulgar |
 
 ## Pendientes conocidos
 

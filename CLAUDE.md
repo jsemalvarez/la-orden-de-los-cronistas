@@ -51,3 +51,4 @@ pestaña visible hay que pisar el bucle a mano:
 | Agregar un color o una casilla | `PALETA` en `src/motor/pantalla.ts`, `CASILLAS` en `src/motor/mapa.ts` |
 | Agregar una marca `{clave}` al guion | `resolverMarca` en `src/juego/escena-exploracion.ts` |
 | Agregar una regla de juego nueva | `src/juego/escena-exploracion.ts` |
+| Tocar los controles del celular | el mando en `index.html` y `src/ui/mando-tactil.ts` |

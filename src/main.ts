@@ -4,6 +4,7 @@ import { Entrada } from './motor/entrada';
 import { Pantalla } from './motor/pantalla';
 import { cargar, partidaNueva, borrarGuardado, type Partida } from './motor/estado';
 import { EscenaExploracion } from './juego/escena-exploracion';
+import { conectarTactil } from './ui/mando-tactil';
 
 const CIUDAD_ID = 'mar-del-plata';
 const MISION_ID = 'mision-01-el-nombre-robado';
@@ -14,6 +15,8 @@ function arrancar(): void {
 
   const pantalla = new Pantalla(canvas);
   const entrada = new Entrada();
+
+  conectarTactil(entrada, document.querySelector<HTMLElement>('#mando'), canvas);
 
   const ciudad = obtenerCiudad(CIUDAD_ID);
   const mision = obtenerMision(MISION_ID);

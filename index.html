@@ -2,28 +2,147 @@
 <html lang="es">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover"
+    />
     <title>La Orden de los Cronistas y el Enigma de Marola</title>
     <style>
-      :root { color-scheme: dark; }
+      :root {
+        color-scheme: dark;
+        /* Los mismos colores que PALETA en src/motor/pantalla.ts: el mando es parte del juego,
+           no un widget pegado encima. */
+        --contorno: #1b2430;
+        --papel: #f8f8f0;
+        --papel-borde: #58687c;
+        --papel-sombra: #d8d8cc;
+        --marco: #232a33;
+        --tecla: clamp(48px, 16vw, 72px);
+      }
       html, body { margin: 0; height: 100%; }
       body {
         background: #12161b;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 10px;
         font-family: "Courier New", monospace;
         color: #8a94a6;
         overflow: hidden;
+        overscroll-behavior: none;
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      #juego {
+        height: 100%;
+        height: 100dvh;
+        display: grid;
+        gap: 8px;
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-rows: minmax(0, 1fr) auto auto;
+        grid-template-areas:
+          "escenario"
+          "mando"
+          "ayuda";
+      }
+      #escenario {
+        grid-area: escenario;
+        min-width: 0;
+        min-height: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
       #pantalla {
         image-rendering: pixelated;
         border-radius: 2px;
-        box-shadow: 0 0 0 6px #232a33, 0 14px 44px rgba(0, 0, 0, 0.7);
+        box-shadow: 0 0 0 6px var(--marco), 0 14px 44px rgba(0, 0, 0, 0.7);
+        touch-action: none;
+        -webkit-touch-callout: none;
       }
-      .ayuda { margin: 0; font-size: 12px; letter-spacing: 0.02em; }
+      .ayuda {
+        grid-area: ayuda;
+        margin: 0 0 10px;
+        padding: 0 12px;
+        text-align: center;
+        font-size: 12px;
+        letter-spacing: 0.02em;
+      }
+
+      /* ── Mando en pantalla ──────────────────────────────────────────────────
+         Sólo aparece donde hace falta: pantalla táctil o ventana angosta. */
+      #mando {
+        grid-area: mando;
+        display: none;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 0 18px max(12px, env(safe-area-inset-bottom));
+        box-sizing: border-box;
+        user-select: none;
+        -webkit-user-select: none;
+      }
+      .tecla {
+        appearance: none;
+        margin: 0;
+        border: 2px solid var(--contorno);
+        border-radius: 12px;
+        background: var(--papel);
+        color: var(--contorno);
+        font-family: inherit;
+        font-size: 20px;
+        line-height: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 3px 0 var(--papel-borde);
+        touch-action: none;
+        -webkit-touch-callout: none;
+        cursor: pointer;
+      }
+      .tecla.apretada {
+        background: var(--papel-sombra);
+        box-shadow: 0 1px 0 var(--papel-borde);
+        transform: translateY(2px);
+      }
+
+      .cruceta {
+        display: grid;
+        grid-template-columns: repeat(3, var(--tecla));
+        grid-template-rows: repeat(3, var(--tecla));
+      }
+      [data-boton="arriba"] { grid-area: 1 / 2; }
+      [data-boton="izquierda"] { grid-area: 2 / 1; }
+      [data-boton="derecha"] { grid-area: 2 / 3; }
+      [data-boton="abajo"] { grid-area: 3 / 2; }
+
+      .acciones { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+      .acciones .rotulo { font-size: 11px; letter-spacing: 0.08em; }
+      [data-boton="aceptar"] {
+        width: calc(var(--tecla) * 1.3);
+        height: calc(var(--tecla) * 1.3);
+        border-radius: 50%;
+        font-size: 24px;
+        font-weight: bold;
+      }
+
+      @media (pointer: coarse), (max-width: 760px) {
+        #mando { display: flex; }
+      }
+      @media (pointer: coarse) {
+        .ayuda { display: none; }
+      }
+
+      /* Celular acostado: el mando se corre a los costados y el mapa se queda con el alto. */
+      @media (pointer: coarse) and (orientation: landscape) and (max-height: 620px) {
+        :root { --tecla: clamp(38px, 15vh, 58px); }
+        #juego {
+          gap: 4px;
+          grid-template-columns: auto minmax(0, 1fr) auto;
+          grid-template-rows: minmax(0, 1fr);
+          grid-template-areas: "cruceta escenario acciones";
+        }
+        #mando { display: contents; }
+        .cruceta { grid-area: cruceta; align-self: center; margin-left: max(8px, env(safe-area-inset-left)); }
+        .acciones { grid-area: acciones; align-self: center; margin-right: max(8px, env(safe-area-inset-right)); }
+      }
+
       .errores {
         position: fixed; inset: 24px; overflow: auto; margin: 0; padding: 18px;
         background: #1b2430; color: #f0a0a0; border: 2px solid #e04c3c;
@@ -32,8 +151,24 @@
     </style>
   </head>
   <body>
-    <canvas id="pantalla"></canvas>
-    <p class="ayuda">Flechas o WASD para moverte · Enter o Espacio para hablar y avanzar</p>
+    <div id="juego">
+      <div id="escenario"><canvas id="pantalla"></canvas></div>
+
+      <div id="mando">
+        <div class="cruceta">
+          <button class="tecla" type="button" data-boton="arriba" aria-label="Arriba">▲</button>
+          <button class="tecla" type="button" data-boton="izquierda" aria-label="Izquierda">◀</button>
+          <button class="tecla" type="button" data-boton="derecha" aria-label="Derecha">▶</button>
+          <button class="tecla" type="button" data-boton="abajo" aria-label="Abajo">▼</button>
+        </div>
+        <div class="acciones">
+          <button class="tecla" type="button" data-boton="aceptar" aria-label="Hablar y avanzar">A</button>
+          <span class="rotulo">hablar</span>
+        </div>
+      </div>
+
+      <p class="ayuda">Flechas o WASD para moverte · Enter o Espacio para hablar y avanzar</p>
+    </div>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

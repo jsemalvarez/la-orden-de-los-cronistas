@@ -1,6 +1,12 @@
-/** Teclado: estado sostenido + detección de flanco (recién presionada). */
+/** Botones del juego: estado sostenido + detección de flanco (recién presionada). */
 
-export type Boton = 'arriba' | 'abajo' | 'izquierda' | 'derecha' | 'aceptar' | 'cancelar';
+const BOTONES = ['arriba', 'abajo', 'izquierda', 'derecha', 'aceptar', 'cancelar'] as const;
+
+export type Boton = (typeof BOTONES)[number];
+
+export function esBoton(valor: string): valor is Boton {
+  return (BOTONES as readonly string[]).includes(valor);
+}
 
 const MAPEO: Record<string, Boton> = {
   ArrowUp: 'arriba',
@@ -27,14 +33,27 @@ export class Entrada {
       const boton = MAPEO[e.code];
       if (!boton) return;
       e.preventDefault();
-      if (!this.sostenidas.has(boton)) this.recienPresionadas.add(boton);
-      this.sostenidas.add(boton);
+      this.presionar(boton);
     });
     window.addEventListener('keyup', (e) => {
       const boton = MAPEO[e.code];
-      if (boton) this.sostenidas.delete(boton);
+      if (boton) this.soltar(boton);
     });
-    window.addEventListener('blur', () => this.sostenidas.clear());
+    window.addEventListener('blur', () => this.soltarTodo());
+  }
+
+  /** El teclado no es la única fuente: el mando táctil escribe acá mismo. */
+  presionar(boton: Boton): void {
+    if (!this.sostenidas.has(boton)) this.recienPresionadas.add(boton);
+    this.sostenidas.add(boton);
+  }
+
+  soltar(boton: Boton): void {
+    this.sostenidas.delete(boton);
+  }
+
+  soltarTodo(): void {
+    this.sostenidas.clear();
   }
 
   sostenida(boton: Boton): boolean {

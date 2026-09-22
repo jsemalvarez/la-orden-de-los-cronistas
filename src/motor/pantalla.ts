@@ -11,6 +11,9 @@ export const TILE = 32;
 export const COLUMNAS = ANCHO / TILE;
 export const FILAS = ALTO / TILE;
 
+/** Ancho del marco que el CSS dibuja alrededor del canvas. */
+const MARCO = 8;
+
 /**
  * Paleta con nombres, no con índices: el contenido dice `"color": "azul"` y se entiende
  * sin tener que ir a buscar a qué corresponde el número 7.
@@ -81,17 +84,30 @@ export class Pantalla {
     this.ctx.textBaseline = 'top';
     this.ajustarEscala();
     window.addEventListener('resize', () => this.ajustarEscala());
+    // El contenedor cambia de tamaño sin que cambie la ventana: al rotar el celular, al
+    // aparecer la barra del navegador o al entrar el mando táctil.
+    const contenedor = canvas.parentElement;
+    if (contenedor) new ResizeObserver(() => this.ajustarEscala()).observe(contenedor);
   }
 
-  /** Escala por múltiplos enteros para que los píxeles queden cuadrados y nítidos. */
+  /**
+   * El canvas ocupa todo el lugar que le deja su contenedor.
+   *
+   * De 2x para arriba se redondea a entero, que es lo que mantiene los píxeles cuadrados y
+   * nítidos. Más abajo no: en un celular la diferencia entre 1x y 1,8x es la diferencia
+   * entre leer el diálogo y no leerlo, y eso vale más que la nitidez.
+   */
   private ajustarEscala(): void {
-    const escala = Math.max(
-      1,
-      // Se descuenta el alto de la línea de ayuda y el marco, para que nada quede tapado.
-      Math.floor(Math.min((window.innerWidth - 24) / ANCHO, (window.innerHeight - 60) / ALTO)),
-    );
-    this.canvas.style.width = `${ANCHO * escala}px`;
-    this.canvas.style.height = `${ALTO * escala}px`;
+    const contenedor = this.canvas.parentElement;
+    // El marco del canvas se dibuja por fuera del canvas: hay que dejarle su lugar.
+    const disponibleAncho = (contenedor?.clientWidth ?? window.innerWidth) - MARCO * 2;
+    const disponibleAlto = (contenedor?.clientHeight ?? window.innerHeight) - MARCO * 2;
+
+    const holgada = Math.min(disponibleAncho / ANCHO, disponibleAlto / ALTO);
+    const escala = Math.max(0.5, holgada >= 2 ? Math.floor(holgada) : holgada);
+
+    this.canvas.style.width = `${Math.floor(ANCHO * escala)}px`;
+    this.canvas.style.height = `${Math.floor(ALTO * escala)}px`;
   }
 
   limpiar(color: Color = 'pasto'): void {
