@@ -29,7 +29,7 @@ export class MaquinaDialogo {
     private readonly dialogo: Dialogo,
     private readonly emitir: (efecto: Efecto) => void,
     /** Para evaluar el campo `requiere` de las opciones. */
-    private readonly banderaActiva: (bandera: string) => boolean,
+    private readonly cumpleRequisito: (requisito: string) => boolean,
     /** Para resolver las marcas `{clave}` del texto. */
     private readonly resolver: (clave: string) => string | undefined = () => undefined,
   ) {
@@ -75,7 +75,7 @@ export class MaquinaDialogo {
   get opciones(): OpcionDialogo[] {
     if (this.ultimoNodo || !this.actual?.opciones || !this.textoCompleto) return [];
     return this.actual.opciones
-      .filter((o) => !o.requiere || o.requiere.every((b) => this.banderaActiva(b)))
+      .filter((o) => !o.requiere || o.requiere.every((r) => this.cumpleRequisito(r)))
       .map((o) => ({ ...o, texto: interpolar(o.texto, this.resolver) }));
   }
 

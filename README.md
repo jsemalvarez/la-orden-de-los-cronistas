@@ -66,7 +66,7 @@ plaza a leer en el cantero qué versión de la historia quedó en tu partida.
   Cada edificio tiene una placa que se puede leer.
 - Mapa de casillas con colisiones, cámara, orden de dibujo por profundidad y tiles con textura
 - Sprites de personas con ropa, pelo, dirección y animación de paso
-- Diálogos con máquina de escribir, panel de opciones, opciones condicionadas por banderas, y
+- Diálogos con máquina de escribir, panel de opciones, opciones condicionadas por banderas o pistas, y
   marcas `{fecha}` / `{anios}` / `{nombreVigente}` resueltas al jugar
 - **El calendario floral muestra la fecha real del día**, y el nombre titila mientras el hecho
   está en disputa

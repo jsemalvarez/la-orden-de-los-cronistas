@@ -47,6 +47,14 @@ Consecuencia directa de la regla anterior y seña de identidad del juego: **cada
 con su propia versión de la historia de Mar del Plata**, según qué logró restaurar y qué no.
 No hay "game over": hay una ciudad distinta.
 
+### Las hendijas
+Son los pasos de un momento a otro, y **sólo se abren para quien ya sabe a qué va**: la de cada
+escena se abre cuando el jugador consiguió la pista verdadera de esa escena.
+
+> **Regla de diseño:** el camino de una misión es de ida. Si una hendija dejara pasar sin la
+> pista de su escena, el jugador podría llegar al final sin forma de resolverlo, y sin poder
+> volver a buscarla.
+
 ## 3. Estilo
 
 **Pokémon de Game Boy Advance**: color pleno, mapa cenital, personaje que camina por casillas,

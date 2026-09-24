@@ -204,10 +204,18 @@ export class EscenaExploracion {
     this.dialogo = new MaquinaDialogo(
       dialogo,
       (efecto) => this.aplicar(efecto),
-      (bandera) => this.partida.banderas[bandera] === true,
+      (requisito) => this.cumple(requisito),
       (clave) => this.resolverMarca(clave),
     );
     this.dialogo.iniciar();
+  }
+
+  /**
+   * Un requisito de `requiere` se cumple con una bandera activa o con una pista conseguida.
+   * Aceptar pistas evita espejar cada una en una bandera que habría que mantener a la par.
+   */
+  private cumple(requisito: string): boolean {
+    return this.partida.banderas[requisito] === true || this.partida.pistas.includes(requisito);
   }
 
   private actualizarDialogo(dt: number): void {

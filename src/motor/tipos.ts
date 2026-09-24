@@ -67,7 +67,10 @@ export interface OpcionDialogo {
   /** Id del nodo al que salta. */
   destino: string;
   efectos?: Efecto[];
-  /** Sólo se ofrece si estas banderas están activas. */
+  /**
+   * Sólo se ofrece si el jugador ya tiene todo esto. Cada elemento es una bandera activa o el id
+   * de una pista conseguida.
+   */
   requiere?: string[];
 }
 

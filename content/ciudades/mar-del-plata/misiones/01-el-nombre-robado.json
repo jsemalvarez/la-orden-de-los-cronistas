@@ -453,11 +453,14 @@
         },
         {
           "id": "t3",
-          "texto": "Del otro lado es la capilla, unos meses más tarde.",
+          "texto": "Del otro lado es la capilla, unos meses más tarde. Pero una hendija no se abre para cualquiera: sólo para quien ya sabe a qué va.",
           "opciones": [
             {
               "texto": "Dejarte llevar.",
               "destino": "t4",
+              "requiere": [
+                "pista-muelle"
+              ],
               "efectos": [
                 {
                   "tipo": "irAEscena",
@@ -684,11 +687,14 @@
         },
         {
           "id": "d3",
-          "texto": "Del otro lado es el 10 de febrero de 1874.",
+          "texto": "Del otro lado es el 10 de febrero de 1874. Como la anterior, sólo se abre para quien ya sabe a qué va.",
           "opciones": [
             {
               "texto": "Dejarte llevar.",
               "destino": "d4",
+              "requiere": [
+                "pista-nombre"
+              ],
               "efectos": [
                 {
                   "tipo": "irAEscena",
