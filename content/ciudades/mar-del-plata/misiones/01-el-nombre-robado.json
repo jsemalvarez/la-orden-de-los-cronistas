@@ -58,8 +58,8 @@
       "epocaId": "presente",
       "mapaId": "mapa-presente-plaza",
       "entrada": {
-        "x": 15,
-        "y": 19
+        "x": 17,
+        "y": 21
       },
       "ocultar": [
         "turista"
@@ -68,8 +68,8 @@
         {
           "id": "balbina",
           "nombre": "Balbina",
-          "x": 15,
-          "y": 18,
+          "x": 17,
+          "y": 20,
           "mirando": "sur",
           "ropa": "violeta",
           "pelo": "piedraOsc",

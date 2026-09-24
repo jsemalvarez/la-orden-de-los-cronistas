@@ -21,6 +21,8 @@ export class MaquinaDialogo {
   /** El texto del nodo actual, ya con las marcas resueltas. */
   private textoActual = '';
   private revelados = 0;
+  /** Al aceptar el nodo que se está mostrando, la conversación se cierra. */
+  private ultimoNodo = false;
   opcionElegida = 0;
 
   constructor(
@@ -59,9 +61,19 @@ export class MaquinaDialogo {
     return !this.actual || this.revelados >= this.textoActual.length;
   }
 
+  /**
+   * Termina la conversación después del nodo en curso, sin ofrecer opciones ni seguir.
+   *
+   * Existe para que un efecto que se lleva al jugador de la escena no le corte el texto que lo
+   * acompaña. Si lo dispara una opción, el último nodo es el destino de esa opción.
+   */
+  terminarTrasEsteNodo(): void {
+    this.ultimoNodo = true;
+  }
+
   /** Opciones que cumplen sus requisitos. Sólo se muestran con el texto ya completo. */
   get opciones(): OpcionDialogo[] {
-    if (!this.actual?.opciones || !this.textoCompleto) return [];
+    if (this.ultimoNodo || !this.actual?.opciones || !this.textoCompleto) return [];
     return this.actual.opciones
       .filter((o) => !o.requiere || o.requiere.every((b) => this.banderaActiva(b)))
       .map((o) => ({ ...o, texto: interpolar(o.texto, this.resolver) }));
@@ -84,6 +96,11 @@ export class MaquinaDialogo {
     // Primer toque con el texto a medias: lo completa de golpe.
     if (!this.textoCompleto) {
       this.revelados = this.textoActual.length;
+      return;
+    }
+
+    if (this.ultimoNodo) {
+      this.actual = null;
       return;
     }
 

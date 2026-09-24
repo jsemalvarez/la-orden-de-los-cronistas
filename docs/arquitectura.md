@@ -87,6 +87,12 @@ Los efectos son el único modo en que un diálogo toca el estado del juego:
 Que la lista de efectos sea cerrada y chica es deliberado: mantiene el contenido escribible por
 alguien que no programa, y hace que el motor no necesite cambiar cuando se agregan misiones.
 
+Cuando la misión se cierra —por `resolverMision`, porque la corrupción llegó al máximo o porque
+las Gemas no alcanzaron— la conversación no se corta de golpe: el jugador termina de leer el nodo
+en curso (o el destino de la opción que eligió) y recién ahí pasa a la `escenaFinal`. Por eso el
+desenlace se escribe en el mismo nodo que lleva el efecto. `irAEscena`, en cambio, salta en el
+acto: el destino de esa opción sólo se lee si el salto no se pudo pagar.
+
 ## Cómo se escribe un mapa
 
 Una leyenda de un carácter por tipo de casilla y el dibujo del mapa en texto:

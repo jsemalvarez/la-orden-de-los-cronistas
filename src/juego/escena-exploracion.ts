@@ -27,6 +27,8 @@ export class EscenaExploracion {
   private dialogo: MaquinaDialogo | null = null;
   private aviso: { texto: string; restante: number } | null = null;
   private resuelta = false;
+  /** Escena a la que se pasa cuando termine la conversación en curso. */
+  private escenaPendiente: string | null = null;
   /** Reloj propio de la escena, para el titileo del calendario. */
   private tiempo = 0;
 
@@ -57,7 +59,8 @@ export class EscenaExploracion {
   actualizar(dt: number): void {
     this.tiempo += dt;
 
-    if (this.aviso) {
+    // Mientras la caja de diálogo lo tapa, el aviso no se ve: que no se consuma sin leerse.
+    if (this.aviso && !this.dialogo?.activo) {
       this.aviso.restante -= dt;
       if (this.aviso.restante <= 0) this.aviso = null;
     }
@@ -65,6 +68,10 @@ export class EscenaExploracion {
 
     if (this.dialogo?.activo) {
       this.actualizarDialogo(dt);
+    } else if (this.escenaPendiente) {
+      const escenaId = this.escenaPendiente;
+      this.escenaPendiente = null;
+      this.entrarA(escenaId, { cobrar: false });
     } else {
       this.dialogo = null;
       this.actualizarExploracion();
@@ -352,11 +359,27 @@ export class EscenaExploracion {
 
     registrarHecho(this.partida, this.mision.hecho.id, resultado, enunciado);
     this.partida.banderas[`mision-${resultado}`] = true;
+
+    const final = this.mision.escenaFinal;
+    if (!final) {
+      guardar(this.partida);
+      this.mostrarAviso(enunciado, 12);
+      return;
+    }
+
+    // Se guarda ya en el epílogo por si cierran el juego antes de terminar de leer.
+    this.partida.escenaActual = final;
     guardar(this.partida);
 
     // El epílogo es gratis: a la Orden vuelve el jugador aunque se haya quedado sin Gemas.
-    if (this.mision.escenaFinal) this.entrarA(this.mision.escenaFinal, { cobrar: false });
-    else this.mostrarAviso(enunciado, 12);
+    // Si la misión se cerró en medio de una conversación, primero se termina de leer lo que
+    // se estaba diciendo: suele ser justamente el desenlace.
+    if (this.dialogo?.activo) {
+      this.dialogo.terminarTrasEsteNodo();
+      this.escenaPendiente = final;
+    } else {
+      this.entrarA(final, { cobrar: false });
+    }
   }
 
   private mostrarAviso(texto: string, segundos = DURACION_AVISO): void {
