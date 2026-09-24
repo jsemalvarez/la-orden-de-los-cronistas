@@ -6,7 +6,7 @@
  */
 
 import type { Ciudad, Mapa, MapaFuente, Mision } from './tipos';
-import { existeCasilla } from './mapa';
+import { esSolido, existeCasilla } from './mapa';
 
 const modulosCiudad = import.meta.glob('/content/ciudades/*/ciudad.json', { eager: true });
 const modulosMapa = import.meta.glob('/content/ciudades/*/mapas/*.json', { eager: true });
@@ -28,6 +28,25 @@ function porId<T extends { id: string }>(modulos: Record<string, unknown>): Map<
 
 /** Problemas encontrados al normalizar los mapas, para mostrarlos junto al resto. */
 const problemasDeMapa: string[] = [];
+
+/**
+ * Qué tiene de malo ubicar algo en (x, y), o `null` si nada.
+ *
+ * Una persona —o el jugador al entrar— sobre una casilla sólida está metida en una pared, un
+ * árbol o un cantero: queda tapada por lo que se dibuja ahí o no hay por dónde llegarle, y a
+ * simple vista parece que no está. Un objeto sí puede ir sobre algo sólido, como una placa en
+ * una pared.
+ */
+function problemaDeUbicacion(mapa: Mapa, x: number, y: number, esObjeto = false): string | null {
+  if (x < 0 || y < 0 || x >= mapa.ancho || y >= mapa.alto) {
+    return `fuera del mapa de ${mapa.ancho}x${mapa.alto}`;
+  }
+  const casilla = mapa.casillas[y]?.[x];
+  if (!esObjeto && casilla !== undefined && esSolido(mapa, x, y)) {
+    return `sobre la casilla "${casilla}", que es sólida`;
+  }
+  return null;
+}
 
 /** Convierte la grilla de texto en la grilla de nombres que consume el motor. */
 function normalizarMapa(fuente: MapaFuente): Mapa {
@@ -67,28 +86,28 @@ function normalizarMapa(fuente: MapaFuente): Mapa {
     quejar(`el símbolo "${simbolo}" aparece en el mapa pero no está en la leyenda.`);
   }
 
-  const alto = casillas.length;
-  const { x, y } = fuente.entrada ?? { x: 0, y: 0 };
-  if (x < 0 || y < 0 || x >= ancho || y >= alto) {
-    quejar(`la entrada (${x}, ${y}) cae fuera del mapa de ${ancho}x${alto}.`);
-  }
-
-  for (const personaje of fuente.personajes ?? []) {
-    if (personaje.x < 0 || personaje.y < 0 || personaje.x >= ancho || personaje.y >= alto) {
-      quejar(`"${personaje.nombre}" está en (${personaje.x}, ${personaje.y}), fuera del mapa.`);
-    }
-  }
-
-  return {
+  const mapa: Mapa = {
     id: fuente.id,
     nombre: fuente.nombre,
     ancho,
-    alto,
+    alto: casillas.length,
     casillas,
     solidos: fuente.solidos ?? [],
     personajes: fuente.personajes ?? [],
     entrada: fuente.entrada,
   };
+
+  const entrada = fuente.entrada ?? { x: 0, y: 0 };
+  const problemaEntrada = problemaDeUbicacion(mapa, entrada.x, entrada.y);
+  if (problemaEntrada) quejar(`la entrada (${entrada.x}, ${entrada.y}) cae ${problemaEntrada}.`);
+
+  for (const personaje of mapa.personajes) {
+    const { x, y } = personaje;
+    const problema = problemaDeUbicacion(mapa, x, y, personaje.tipo === 'objeto');
+    if (problema) quejar(`"${personaje.nombre}" está en (${x}, ${y}), ${problema}.`);
+  }
+
+  return mapa;
 }
 
 export const CIUDADES = porId<Ciudad>(modulosCiudad);
@@ -158,14 +177,32 @@ export function validarMision(mision: Mision, ciudad: Ciudad): string[] {
     if (!idsEpoca.has(escena.epocaId)) {
       quejar(`la escena "${escena.id}" usa una época inexistente "${escena.epocaId}".`);
     }
-    if (!MAPAS.has(escena.mapaId)) {
+    const mapa = MAPAS.get(escena.mapaId);
+    if (!mapa) {
       quejar(`la escena "${escena.id}" usa un mapa inexistente "${escena.mapaId}".`);
       continue;
     }
+
+    // Lo que trae el mapa ya se revisó al normalizarlo; acá, lo que la escena mueve o suma.
+    if (escena.entrada) {
+      const { x, y } = escena.entrada;
+      const problema = problemaDeUbicacion(mapa, x, y);
+      if (problema) {
+        quejar(`la escena "${escena.id}" hace entrar al jugador en (${x}, ${y}), ${problema}.`);
+      }
+    }
+    for (const personaje of escena.personajes ?? []) {
+      const { x, y } = personaje;
+      const problema = problemaDeUbicacion(mapa, x, y, personaje.tipo === 'objeto');
+      if (problema) {
+        quejar(`"${personaje.nombre}" (escena ${escena.id}) está en (${x}, ${y}), ${problema}.`);
+      }
+    }
+
     // El elenco de una escena es el del mapa, menos los ocultos, más los propios.
     const ocultos = new Set(escena.ocultar ?? []);
     const elenco = [
-      ...MAPAS.get(escena.mapaId)!.personajes.filter((p) => !ocultos.has(p.id)),
+      ...mapa.personajes.filter((p) => !ocultos.has(p.id)),
       ...(escena.personajes ?? []),
     ];
     for (const personaje of elenco) {
