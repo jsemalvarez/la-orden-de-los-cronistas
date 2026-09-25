@@ -81,9 +81,10 @@ Tres columnas de manzanas y cinco filas, separadas por las dos calles que ordena
 - Bajando de la rotonda, las **diagonales Pueyrredón** (sudoeste) y **Alberdi Sur** (sudeste)
   cortan las manzanas que van a la **costa**.
 
-> El centro de Mar del Plata tiene la retícula girada unos 45° respecto al norte: por eso en un
-> mapa satelital todas las calles se ven en diagonal. En el juego la retícula se alinea con la
-> pantalla, y así las diagonales de verdad —Pueyrredón y Alberdi— son las que se ven en diagonal.
+> El centro de Mar del Plata tiene la retícula girada unos 30° respecto al norte (medido sobre
+> OpenStreetMap): por eso en un mapa satelital todas las calles se ven en diagonal. En el juego la
+> retícula se alinea con la pantalla, y así las diagonales de verdad —Pueyrredón y Alberdi— son
+> las que se ven en diagonal.
 >
 > ⚠️ Los nombres de las dos calles horizontales que quedan (entre la plaza y la costa) están
 > **sin confirmar**: en el mapa figuran sin nombre hasta tener el dato.
