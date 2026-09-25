@@ -13,6 +13,7 @@ import { ANCHO, ALTO, Pantalla, TILE } from '../motor/pantalla';
 import { CORRUPCION_MAXIMA, guardar, registrarHecho, type Partida } from '../motor/estado';
 import type { Ciudad, Direccion, Efecto, Escena, Mapa, Mision } from '../motor/tipos';
 import { dibujarAviso, dibujarCajaDialogo, dibujarHud } from '../ui/caja-texto';
+import { MenuPausa } from '../ui/menu-pausa';
 
 const DURACION_AVISO = 3.2;
 
@@ -31,6 +32,7 @@ export class EscenaExploracion {
   private escenaPendiente: string | null = null;
   /** Reloj propio de la escena, para el titileo del calendario. */
   private tiempo = 0;
+  private readonly menu: MenuPausa;
 
   constructor(
     private readonly pantalla: Pantalla,
@@ -38,7 +40,9 @@ export class EscenaExploracion {
     private readonly mision: Mision,
     private readonly ciudad: Ciudad,
     private readonly partida: Partida,
+    alReiniciar: () => void,
   ) {
+    this.menu = new MenuPausa(entrada, alReiniciar);
     this.resuelta = partida.lineaTemporal.some((r) => r.hechoId === mision.hecho.id);
     this.entrarA(this.partida.escenaActual, { cobrar: false });
   }
@@ -53,10 +57,16 @@ export class EscenaExploracion {
       dialogoActivo: this.dialogo?.activo ?? false,
       nodo: this.dialogo?.nodo?.id ?? null,
       opciones: this.dialogo?.opciones.map((o) => o.texto) ?? [],
+      menuAbierto: this.menu.abierto,
     };
   }
 
   actualizar(dt: number): void {
+    // Con el menú abierto, la escena queda congelada: ni pasos, ni avisos, ni titileo.
+    if (this.menu.abierto) {
+      this.menu.actualizar();
+      return;
+    }
     this.tiempo += dt;
 
     // Mientras la caja de diálogo lo tapa, el aviso no se ve: que no se consuma sin leerse.
@@ -117,7 +127,8 @@ export class EscenaExploracion {
 
     dibujarHud(this.pantalla, this.partida.gemas, this.rotuloEpoca());
 
-    if (this.dialogo?.activo) dibujarCajaDialogo(this.pantalla, this.dialogo);
+    if (this.menu.abierto) this.menu.dibujar(this.pantalla);
+    else if (this.dialogo?.activo) dibujarCajaDialogo(this.pantalla, this.dialogo);
     else if (this.aviso) dibujarAviso(this.pantalla, this.aviso.texto);
   }
 
@@ -153,6 +164,11 @@ export class EscenaExploracion {
   // ───────────────────────────────────────────────────────────── exploración
 
   private actualizarExploracion(): void {
+    // Antes que el paso en curso: si no, un toque rápido mientras camina se pierde.
+    if (this.entrada.presionada('cancelar')) {
+      this.menu.abrir();
+      return;
+    }
     if (this.jugador.moviendose) return;
 
     if (this.entrada.presionada('aceptar')) {

@@ -13,27 +13,9 @@ const INTERLINEA = 18;
 export function dibujarCajaDialogo(pantalla: Pantalla, maquina: MaquinaDialogo): void {
   if (!maquina.nodo) return;
 
-  const opciones = maquina.opciones;
-  if (opciones.length > 0) dibujarPanelOpciones(pantalla, maquina, opciones);
-
-  pantalla.ventana(MARGEN, Y_CAJA, ANCHO - MARGEN * 2, ALTO_CAJA);
-
-  const x = MARGEN + 14;
-  let y = Y_CAJA + 14;
-
-  if (maquina.hablante) {
-    // Cartelito con el nombre, montado sobre el borde de arriba de la caja.
-    const ancho = pantalla.anchoTexto(maquina.hablante, 12) + 20;
-    pantalla.ventana(MARGEN + 10, Y_CAJA - 13, ancho, 24);
-    pantalla.texto(maquina.hablante, MARGEN + 20, Y_CAJA - 7, 'papelBorde', 12);
-    y += 6;
-  }
-
-  const anchoUtil = ANCHO - MARGEN * 2 - 28;
-  for (const linea of pantalla.partirEnLineas(maquina.textoVisible, anchoUtil, TAM_TEXTO)) {
-    pantalla.texto(linea, x, y, 'contorno', TAM_TEXTO);
-    y += INTERLINEA;
-  }
+  const opciones = maquina.opciones.map((o) => o.texto);
+  if (opciones.length > 0) dibujarPanelOpciones(pantalla, opciones, maquina.opcionElegida);
+  dibujarCaja(pantalla, maquina.textoVisible, maquina.hablante);
 
   // Flechita de "seguir", sólo cuando terminó de escribir y no hay que elegir nada.
   if (maquina.textoCompleto && opciones.length === 0) {
@@ -43,12 +25,40 @@ export function dibujarCajaDialogo(pantalla: Pantalla, maquina: MaquinaDialogo):
   }
 }
 
-function dibujarPanelOpciones(
+/** Un menú del juego: la misma caja y el mismo panel de opciones que un diálogo. */
+export function dibujarMenu(
   pantalla: Pantalla,
-  maquina: MaquinaDialogo,
-  opciones: { texto: string }[],
+  texto: string,
+  opciones: string[],
+  elegida: number,
 ): void {
-  const anchoMax = Math.max(...opciones.map((o) => pantalla.anchoTexto(o.texto, TAM_TEXTO)));
+  dibujarPanelOpciones(pantalla, opciones, elegida);
+  dibujarCaja(pantalla, texto);
+}
+
+function dibujarCaja(pantalla: Pantalla, texto: string, hablante?: string): void {
+  pantalla.ventana(MARGEN, Y_CAJA, ANCHO - MARGEN * 2, ALTO_CAJA);
+
+  const x = MARGEN + 14;
+  let y = Y_CAJA + 14;
+
+  if (hablante) {
+    // Cartelito con el nombre, montado sobre el borde de arriba de la caja.
+    const ancho = pantalla.anchoTexto(hablante, 12) + 20;
+    pantalla.ventana(MARGEN + 10, Y_CAJA - 13, ancho, 24);
+    pantalla.texto(hablante, MARGEN + 20, Y_CAJA - 7, 'papelBorde', 12);
+    y += 6;
+  }
+
+  const anchoUtil = ANCHO - MARGEN * 2 - 28;
+  for (const linea of pantalla.partirEnLineas(texto, anchoUtil, TAM_TEXTO)) {
+    pantalla.texto(linea, x, y, 'contorno', TAM_TEXTO);
+    y += INTERLINEA;
+  }
+}
+
+function dibujarPanelOpciones(pantalla: Pantalla, opciones: string[], elegida: number): void {
+  const anchoMax = Math.max(...opciones.map((o) => pantalla.anchoTexto(o, TAM_TEXTO)));
   const ancho = Math.min(ANCHO - MARGEN * 2, anchoMax + 46);
   const alto = opciones.length * INTERLINEA + 18;
   const x = ANCHO - MARGEN - ancho;
@@ -58,13 +68,13 @@ function dibujarPanelOpciones(
 
   opciones.forEach((opcion, i) => {
     const fy = y + 10 + i * INTERLINEA;
-    const elegida = i === maquina.opcionElegida;
-    if (elegida) {
+    const marcada = i === elegida;
+    if (marcada) {
       for (let j = 0; j < 4; j++) {
         pantalla.rect(x + 12 + j, fy + 3 + j, 2, 8 - j * 2, 'contorno');
       }
     }
-    pantalla.texto(opcion.texto, x + 26, fy, elegida ? 'contorno' : 'papelBorde', TAM_TEXTO);
+    pantalla.texto(opcion, x + 26, fy, marcada ? 'contorno' : 'papelBorde', TAM_TEXTO);
   });
 }
 

@@ -121,6 +121,15 @@
         font-size: 24px;
         font-weight: bold;
       }
+      /* Chico y aparte, como el START de una Game Boy: que no se apriete buscando la A. */
+      [data-boton="cancelar"] {
+        margin-top: 6px;
+        padding: 0 14px;
+        height: calc(var(--tecla) * 0.5);
+        border-radius: 999px;
+        font-size: 12px;
+        letter-spacing: 0.08em;
+      }
 
       @media (pointer: coarse), (max-width: 760px) {
         #mando { display: flex; }
@@ -164,10 +173,11 @@
         <div class="acciones">
           <button class="tecla" type="button" data-boton="aceptar" aria-label="Hablar y avanzar">A</button>
           <span class="rotulo">hablar</span>
+          <button class="tecla" type="button" data-boton="cancelar" aria-label="Menú">menú</button>
         </div>
       </div>
 
-      <p class="ayuda">Flechas o WASD para moverte · Enter o Espacio para hablar y avanzar</p>
+      <p class="ayuda">Flechas o WASD para moverte · Enter o Espacio para hablar y avanzar · Esc para el menú</p>
     </div>
     <script type="module" src="/src/main.ts"></script>
   </body>

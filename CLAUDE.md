@@ -55,3 +55,4 @@ pestaña visible hay que pisar el bucle a mano:
 | Agregar una marca `{clave}` al guion | `resolverMarca` en `src/juego/escena-exploracion.ts` |
 | Agregar una regla de juego nueva | `src/juego/escena-exploracion.ts` |
 | Tocar los controles del celular | el mando en `index.html` y `src/ui/mando-tactil.ts` |
+| Tocar el menú de pausa (reiniciar la partida) | `src/ui/menu-pausa.ts` |

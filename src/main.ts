@@ -32,7 +32,7 @@ function arrancar(): void {
     partida = partidaNueva(mision.id, mision.escenaInicial);
   }
 
-  const escena = new EscenaExploracion(pantalla, entrada, mision, ciudad, partida);
+  const escena = new EscenaExploracion(pantalla, entrada, mision, ciudad, partida, reiniciarPartida);
 
   iniciarBucle((dt) => {
     escena.actualizar(dt);
@@ -41,6 +41,12 @@ function arrancar(): void {
   });
 
   exponerHerramientas(partida, escena);
+}
+
+/** Borra la partida guardada y arranca de cero, desde la escena inicial. */
+function reiniciarPartida(): void {
+  borrarGuardado();
+  location.reload();
 }
 
 /** Los errores de contenido se ven en pantalla, no escondidos en la consola. */
@@ -58,10 +64,7 @@ function exponerHerramientas(partida: Partida, escena: EscenaExploracion): void 
     cronistas: {
       partida,
       escena,
-      reiniciar: () => {
-        borrarGuardado();
-        location.reload();
-      },
+      reiniciar: reiniciarPartida,
     },
   });
 }

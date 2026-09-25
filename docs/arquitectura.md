@@ -47,7 +47,7 @@ src/motor/
   estado.ts       partida, línea temporal personal, guardado
 
 src/juego/        escenas concretas
-src/ui/           caja de texto estilo GB, HUD de Gemas, mando táctil
+src/ui/           caja de texto estilo GB, HUD de Gemas, mando táctil, menú de pausa
 docs/historia/    respaldo histórico de cada misión  ← obligatorio
 ```
 

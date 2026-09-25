@@ -17,7 +17,8 @@ npm run dev
 | `npm run check` | Chequeo de tipos |
 | `npm run build` | Chequeo de tipos + build de producción |
 
-**Controles:** flechas o WASD para moverse, Enter o Espacio para hablar y avanzar.
+**Controles:** flechas o WASD para moverse, Enter o Espacio para hablar y avanzar, Esc para el
+menú de pausa, que es donde se empieza la partida de nuevo.
 Desde la consola del navegador: `cronistas.partida`, `cronistas.escena.diagnostico`,
 `cronistas.reiniciar()`.
 
