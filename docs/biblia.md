@@ -89,6 +89,25 @@ Tres columnas de manzanas y cinco filas, separadas por las dos calles que ordena
 > ⚠️ Los nombres de las dos calles horizontales que quedan (entre la plaza y la costa) están
 > **sin confirmar**: en el mapa figuran sin nombre hasta tener el dato.
 
+### Todas las épocas con la misma orientación
+
+Todo mapa de exterior, de cualquier época, se orienta como el del presente: **el mar abajo y
+tierra adentro arriba**. De una época a otra cambia lo construido, no para qué lado queda el mar.
+Así el jugador arma en la cabeza un solo plano de la ciudad y lo reconoce en cualquier año:
+bajar es ir hacia la costa; subir, hacia la loma.
+
+- **Si un mapa muestra el mar, va abajo.** La plaza de hoy y el saladero de 1873 tienen la costa
+  en el mismo borde.
+- **Cada lugar queda para el lado en que queda de verdad**, tomando las calles de hoy como
+  referencia: Luro vertical, San Martín a su izquierda, 25 de Mayo y 9 de Julio a su derecha. El
+  saladero estaba a la derecha de Luro, tres cuadras más abajo que la plaza; la capilla, arriba y
+  a la derecha del saladero; Punta Iglesia, a la derecha, sobre la costa. Ver H-07 y H-12.
+- **El texto y el mapa dicen lo mismo.** Si el capataz dice "arriba, en la loma", la loma queda
+  para arriba en la pantalla.
+- Un interior, como el despacho de La Plata, no tiene costa que respetar: se entra por abajo.
+
+Los puntos cardinales de esta biblia son los del juego: el norte es arriba, tierra adentro.
+
 ### El calendario floral es el ancla del juego
 Muestra la **fecha real del día en que se está jugando**, y abajo MAR DEL PLATA y los años
 cumplidos desde 1874. Mientras el hecho está en disputa, el nombre **titila** entre las dos

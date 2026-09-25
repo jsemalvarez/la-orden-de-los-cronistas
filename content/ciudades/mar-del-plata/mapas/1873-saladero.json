@@ -34,33 +34,33 @@
     "torre"
   ],
   "entrada": {
-    "x": 4,
-    "y": 14
+    "x": 10,
+    "y": 9
   },
   "filas": [
-    "~~~~~~~~~~~~~~~~~~",
-    "~~~~~~~~~~~~~~~~~~",
-    "~~~~~~=====~~~~~~~",
-    "aaaaaa=====aaaaaaa",
-    "aaaaaa=====aaaaaaa",
+    ",,,,c,,,,,,,,,,,,,",
+    ",,,,c,,,,,,,,,,,,,",
+    "....c...,,,,,,,,,,",
+    "....c.......,,,,,,",
+    "....c.#######..,,,",
+    "....c.#_____#...T.",
+    ".T..c.#_____#.....",
+    "....c.##D####.....",
+    "....ccccccccccc...",
+    ".T..c.........c.T.",
     "aaaaaaaaaaaaaaaaaa",
-    "....c.............",
-    "..#######.........",
-    "..#_____#...T.....",
-    "..#_____#......T..",
-    "..##D####.........",
-    "....c.............",
-    "....c........T....",
-    ".T..c...........T.",
-    "....c.............",
-    ".................."
+    "aaaaaaaaaaaaa===aa",
+    "~~~~~~~~~~~~~===~~",
+    "~~~~~~~~~~~~~===~~",
+    "~~~~~~~~~~~~~===~~",
+    "~~~~~~~~~~~~~~~~~~"
   ],
   "personajes": [
     {
       "id": "capataz",
       "nombre": "Capataz del saladero",
-      "x": 4,
-      "y": 9,
+      "x": 8,
+      "y": 6,
       "mirando": "sur",
       "ropa": "maderaOsc",
       "ficticio": true,
@@ -69,9 +69,9 @@
     {
       "id": "marinero",
       "nombre": "Marinero",
-      "x": 8,
-      "y": 4,
-      "mirando": "sur",
+      "x": 14,
+      "y": 13,
+      "mirando": "norte",
       "ropa": "azul",
       "ficticio": true,
       "dialogoId": "dlg-marinero"
@@ -79,9 +79,9 @@
     {
       "id": "pescador",
       "nombre": "Pescador viejo",
-      "x": 13,
-      "y": 5,
-      "mirando": "oeste",
+      "x": 3,
+      "y": 11,
+      "mirando": "sur",
       "ropa": "piedraOsc",
       "pelo": "blanco",
       "ficticio": true,
@@ -93,8 +93,8 @@
       "tipo": "objeto",
       "sprite": "brillo",
       "ropa": "aguaClara",
-      "x": 14,
-      "y": 11,
+      "x": 15,
+      "y": 1,
       "mirando": "sur",
       "dialogoId": "dlg-titileo-capilla"
     }

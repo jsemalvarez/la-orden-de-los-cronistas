@@ -20,6 +20,9 @@
   `"leyenda": { "T": "arbol" }`. Nada de índices mágicos.
 - **Los mapas se escriben como texto** (`leyenda` + `filas`). Para uno grande conviene
   generarlo con un script que componga rectángulos; el artefacto que queda es el JSON.
+- **Todos los mapas de una ciudad tienen la misma orientación, en cualquier época.** En Mar del
+  Plata, el mar abajo y tierra adentro arriba, y cada lugar para el lado en que queda de verdad.
+  Ver "Todas las épocas con la misma orientación" en la biblia.
 - **Comentarios: sólo el porqué.** Nada de comentarios que repitan lo que dice el código.
 - Contenido en JSON, nunca en TypeScript: tiene que poder escribirlo alguien que no programa.
 - Cero dependencias de runtime. `typescript` y `vite` son de desarrollo y así queda.
