@@ -4,7 +4,7 @@
 > puede afirmar algo que no esté sostenido acá. Si un dato no está verificado, se marca
 > como `⚠️ SIN VERIFICAR` y no se usa como "pista verdadera".
 
-Última revisión: 2026-09-20 (segunda pasada)
+Última revisión: 2026-09-23 (tercera pasada: dónde quedaba cada lugar)
 
 ---
 
@@ -129,6 +129,29 @@ exterior, con una **loggia de tres arcos de medio punto** sobre Hipólito Yrigoy
 > peatonal, y el **calendario floral justo enfrente**, cruzando la calle, dentro de la plaza.
 > Es la relación real entre los dos (H-08: el calendario está "frente a la Catedral").
 
+### H-12 · Dónde estaban el saladero, el corral y el muelle
+El saladero de Coelho de Meyrelles ocupaba la **manzana de las actuales Av. Luro, Diagonal
+Alberdi, Corrientes y Santa Fe**. Enfrente tenía un gran **corral de palo a pique**, entre las
+hoy San Luis, San Martín, Santiago del Estero y Alberdi. Se instaló en la desembocadura del
+arroyo San Ignacio (hoy Las Chacras), el sitio que después se llamó **Punta Iglesia**, y cerca de
+ahí Coelho construyó un **muelle de madera**. Alrededor se fueron levantando ranchos y barracas,
+y las sendas de entonces marcaron las calles que vendrían.
+
+*Fuentes: La Nación, "El saladero que dio origen a Mar del Plata" (Leonor Capeto, 2/1/2010);
+0223, "El saladero que dio origen a Mar del Plata" (20/2/2022). La bahía entre las lomas de Santa
+Cecilia y Stella Maris como lugar para el muelle: Wikipedia, "José Coelho de Meyrelles".*
+
+**Para qué se usa:** para ubicar los mapas, no como pista. Medido sobre OpenStreetMap, con la
+orientación del juego (Luro vertical, el mar abajo): la Plaza San Martín va de Hipólito Yrigoyen a
+San Luis; el saladero queda a la derecha de Luro, tres cuadras más abajo que la plaza; la capilla
+(H-07, Córdoba entre 9 de Julio y 3 de Febrero), arriba y a la derecha del saladero; Punta Iglesia,
+a la derecha, sobre la costa.
+
+> `⚠️ SIN VERIFICAR` **El muelle de 1873.** Según La Nación (2010), el que hizo Coelho era de
+> madera; la carta de 1873 (H-01) enumera uno de hierro. El blog *Fotos Viejas de Mar del Plata*
+> dice que Peralta Ramos levantó otro después de un temporal en 1865, a la altura de 11 de
+> Septiembre y el Paseo Dávila. Falta una segunda fuente. El juego sigue a la carta.
+
 ### H-06 · Después
 En **1877** llega **Pedro Luro** y se hace cargo del saladero, reactivando la economía de la zona.
 (Gancho natural para una Misión 2.)
@@ -211,3 +234,8 @@ elegante a la discrepancia historiográfica real que acabo de encontrar entre fu
 - [0223 — El Teatro Colón cumple 100 años](https://www.0223.com.ar/nota/2024-6-2-10-2-0-el-teatro-colon-cumple-100-anos-pasado-y-presente-de-un-emblema-de-la-ciudad)
 - [Patrimonio Arquitectónico de Mar del Plata — Palacio Municipal del Partido de Gral. Pueyrredon](http://patrimonioarquitectonicomdq.blogspot.com/2009/12/palacio-municipal-del-partido-de-gral.html)
 - [0223 — De casa a Palacio: cómo se transformó el edificio municipal](https://www.0223.com.ar/nota/2025-11-9-10-46-0-de-casa-a-palacio-como-se-transformo-el-edificio-municipal-con-el-paso-de-los-anos)
+- [La Nación — El saladero que dio origen a Mar del Plata](https://www.lanacion.com.ar/economia/campo/el-saladero-que-dio-origen-a-mar-del-plata-nid1217278/)
+- [0223 — El saladero que dio origen a Mar del Plata](https://www.0223.com.ar/nota/2022-2-20-16-26-0-el-saladero-que-dio-origen-a-mar-del-plata)
+- [Wikipedia — José Coelho de Meyrelles](https://es.wikipedia.org/wiki/Jos%C3%A9_Coelho_de_Meyrelles)
+- [Fotos Viejas de Mar del Plata — Historia de muelles](http://fotosviejasdemardelplata.blogspot.com/2013/08/historia-de-muelles.html) ← blog, sin segunda fuente
+- [OpenStreetMap](https://www.openstreetmap.org/) ← posición de las calles de hoy, de la plaza y de la capilla
